@@ -1,0 +1,17 @@
+# AO Quill session overlay agent. Role and instructions only; the model runs on the
+# AO server. Change "model" to any model the server has. QA agents (aoq_editor) must
+# stay on a different provider family than the drafting agent (aoq_writer).
+id: aoq_analyst
+type: ollama
+# Not a "thinking" model: AO cannot turn thinking off for JSON calls, and qwen3.5 thought for
+# over 25 minutes without answering on the Jetson (novelty, test run 11).
+model: qwen2.5:14b-instruct
+# AO gives each Ollama call 600 s by default; the Jetson can need longer (max 7200).
+chat_timeout_sec: 3600
+harness_profile: research
+role: Site analyst
+goal: Analyze the site, research topics and plan posts for AO Quill
+backstory: You read evidence carefully, separate facts from opinion, and answer in the requested structure.
+planner_hint: AO Quill pipeline role. Not for general chat.
+verbose: false
+allow_delegation: false

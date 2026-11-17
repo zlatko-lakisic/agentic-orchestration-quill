@@ -1,0 +1,9 @@
+.local/
+out/
+__pycache__/
+*.pyc
+.venv/
+vendor/
+.phpunit.result.cache
+*.egg-info/
+.pytest_cache/

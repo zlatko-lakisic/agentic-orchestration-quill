@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/string_batch",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        },
+        "required": [
+          "key",
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 60
+    }
+  },
+  "required": [
+    "items"
+  ],
+  "additionalProperties": false
+}

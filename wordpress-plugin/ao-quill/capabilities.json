@@ -1,0 +1,22 @@
+[
+  {"id": "schedule", "label": "Daily schedule, run now, lease", "status": "shipped", "reason": ""},
+  {"id": "ai_marking", "label": "Private AI marking (meta and non-public taxonomy)", "status": "shipped", "reason": ""},
+  {"id": "multisite_languages", "label": "Multisite per language adapter", "status": "shipped", "reason": ""},
+  {"id": "translation_links", "label": "Translation links for posts this plugin creates", "status": "shipped", "reason": "Stored by the plugin. Existing human posts have no links."},
+  {"id": "term_glossary", "label": "Glossary from the site's term translations", "status": "partial", "reason": "The network stores no term translations. Translators get the target site's own term names instead."},
+  {"id": "seo_aioseo", "label": "All in One SEO title, description and focus keyword", "status": "shipped", "reason": ""},
+  {"id": "site_profile", "label": "Site profile, cached in WordPress", "status": "shipped", "reason": ""},
+  {"id": "style_profile", "label": "Style profiles per language from human posts", "status": "shipped", "reason": "Passed as call context, not as a session skill."},
+  {"id": "topic_search", "label": "Topic candidates from web search", "status": "shipped", "reason": "Served by the worker (client.aoq_search, SearXNG) over the AO Reach tunnel, or a search MCP on the AO server.", "ao": "mcp:search"},
+  {"id": "novelty_retrieval", "label": "Novelty check with embedding retrieval", "status": "planned", "reason": "AO cannot index client documents for embedding retrieval. See docs/ao-gaps.md item 3."},
+  {"id": "novelty_judge", "label": "Novelty check by model judge over titles and excerpts", "status": "partial", "reason": "Fallback until embedding retrieval exists."},
+  {"id": "research_grounding", "label": "Quotes verified as exact substrings on the server", "status": "shipped", "reason": "Needs the aoq_quote_verifier deterministic agent installed on the AO server.", "ao": "agent:quote_verifier"},
+  {"id": "originality_check", "label": "Word n-gram originality on the server", "status": "shipped", "reason": "Needs the aoq_text_checks deterministic agent installed on the AO server.", "ao": "agent:text_checks"},
+  {"id": "images_media_library", "label": "Image reuse from the media library, judged by a vision agent", "status": "shipped", "reason": ""},
+  {"id": "images_stock", "label": "Stock image search (Openverse, Wikimedia Commons)", "status": "shipped", "reason": "Served by the worker (client.aoq_images) over the AO Reach tunnel. Licenses limited to CC0, public domain, CC BY and CC BY-SA; license and attribution come from the provider, not the model.", "ao": "mcp:stock_images"},
+  {"id": "images_web_search", "label": "Web image search through SearXNG (all engines)", "status": "shipped", "reason": "Served by the worker. Licenses are not checked: each image is linked to the page it was found on and marked license unchecked (D28)."},
+  {"id": "images_ai_generated", "label": "AI generated images", "status": "planned", "reason": "AO has no image generation, and no generation service is available to serve from the worker. See docs/ao-gaps.md item 5."},
+  {"id": "qa_harness", "label": "AO harness profiles and impartial QA on QA passes", "status": "planned", "reason": "AO JSON mode does not apply harness profiles or impartial QA to direct_agent calls."},
+  {"id": "usage_reporting", "label": "Token usage and cost in the run log", "status": "planned", "reason": "AO records usage server side but does not return it to Reach clients."},
+  {"id": "mcp_adapter", "label": "Read-only abilities over the WordPress MCP Adapter", "status": "partial", "reason": "Read-only abilities are flagged public for MCP. The MCP Adapter is not installed on the site."}
+]

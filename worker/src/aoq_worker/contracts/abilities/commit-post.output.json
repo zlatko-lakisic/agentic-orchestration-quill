@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "aoq/commit-post.output",
+  "type": "object",
+  "properties": {
+    "translation_group": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "publish"
+      ]
+    },
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          },
+          "blog_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "post_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "^https?://"
+          }
+        },
+        "required": [
+          "language",
+          "blog_id",
+          "post_id",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "blog_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          }
+        },
+        "required": [
+          "blog_id",
+          "id",
+          "key"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "translation_group",
+    "status",
+    "posts",
+    "attachments"
+  ],
+  "additionalProperties": false
+}

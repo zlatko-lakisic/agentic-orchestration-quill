@@ -1,0 +1,476 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "aoq/get-config.output",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "site_brief": {
+      "type": "string",
+      "maxLength": 10000
+    },
+    "trend_seeds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      },
+      "maxItems": 30
+    },
+    "trend_geos": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      },
+      "maxItems": 10
+    },
+    "publish_mode": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "publish"
+      ]
+    },
+    "timezone": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          },
+          "locale": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 20
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "blog_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "^https?://"
+          },
+          "primary": {
+            "type": "boolean"
+          },
+          "excluded": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "code",
+          "locale",
+          "name",
+          "blog_id",
+          "url",
+          "primary",
+          "excluded"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "primary_language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$"
+    },
+    "agents": {
+      "type": "object",
+      "properties": {
+        "site_profile": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "style_profile": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "topics": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "novelty": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "research": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "structurer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "outline": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "draft": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "taxonomy": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "image_shortlist": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "image_vision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "qa_grammar": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "qa_facts": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "qa_style": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "qa_seo": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "translate": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "back_translate": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "translation_qa": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "quote_verifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "text_checks": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "site_profile",
+        "style_profile",
+        "topics",
+        "novelty",
+        "research",
+        "structurer",
+        "outline",
+        "draft",
+        "taxonomy",
+        "image_shortlist",
+        "image_vision",
+        "qa_grammar",
+        "qa_facts",
+        "qa_style",
+        "qa_seo",
+        "translate",
+        "back_translate",
+        "translation_qa",
+        "quote_verifier",
+        "text_checks"
+      ],
+      "additionalProperties": false
+    },
+    "mcp": {
+      "type": "object",
+      "properties": {
+        "search": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "fetch": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "stock_images": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "search",
+        "fetch",
+        "stock_images"
+      ],
+      "additionalProperties": false
+    },
+    "thresholds": {
+      "type": "object",
+      "properties": {
+        "grammar": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "facts": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "style": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "seo": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "structure": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "translation_grammar": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "translation_fidelity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "translation_style": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "grammar",
+        "facts",
+        "style",
+        "seo",
+        "structure",
+        "translation_grammar",
+        "translation_fidelity",
+        "translation_style"
+      ],
+      "additionalProperties": false
+    },
+    "originality_max_overlap": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "max_revision_loops": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "min_words": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 5000
+    },
+    "min_verified_claims": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50
+    },
+    "min_human_posts_for_style": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "inline_image_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 6
+    },
+    "image_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "media_library",
+              "stock",
+              "web_search",
+              "ai_generated"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        },
+        "required": [
+          "id",
+          "enabled",
+          "order"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 4
+    },
+    "media_candidate_limit": {
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 2000
+    },
+    "image_min_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "featured_min_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "fallback_image": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]+:[0-9]+$"
+    },
+    "instagram": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          },
+          "maxItems": 20
+        },
+        "max_hashtags": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "link_hint": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "caption_style": {
+          "type": "string",
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "enabled",
+        "languages",
+        "max_hashtags",
+        "link_hint",
+        "caption_style"
+      ],
+      "additionalProperties": false
+    },
+    "ao_priority": {
+      "type": "string",
+      "enum": [
+        "background",
+        "low",
+        "normal"
+      ]
+    },
+    "stage_timeout_seconds": {
+      "type": "integer",
+      "minimum": 30,
+      "maximum": 14400
+    }
+  },
+  "required": [
+    "run_id",
+    "site_brief",
+    "trend_seeds",
+    "trend_geos",
+    "publish_mode",
+    "timezone",
+    "languages",
+    "primary_language",
+    "agents",
+    "mcp",
+    "thresholds",
+    "originality_max_overlap",
+    "max_revision_loops",
+    "min_words",
+    "min_verified_claims",
+    "min_human_posts_for_style",
+    "inline_image_count",
+    "image_sources",
+    "media_candidate_limit",
+    "image_min_score",
+    "featured_min_score",
+    "fallback_image",
+    "instagram",
+    "ao_priority",
+    "stage_timeout_seconds"
+  ],
+  "additionalProperties": false
+}

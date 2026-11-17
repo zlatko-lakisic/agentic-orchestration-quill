@@ -1,0 +1,262 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "aoq/finish-run.input",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "succeeded",
+        "failed"
+      ]
+    },
+    "failure_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 4000
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "posts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "type": "string",
+                "pattern": "^[a-z]{2,3}$"
+              },
+              "blog_id": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "post_id": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "url": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048,
+                "pattern": "^https?://"
+              }
+            },
+            "required": [
+              "language",
+              "blog_id",
+              "post_id",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[a-z]{2,3}$"
+              },
+              "check": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "language",
+              "check",
+              "score"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "agent_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "model": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "role",
+              "agent_id",
+              "model"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "url": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048,
+                "pattern": "^https?://"
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 500
+              }
+            },
+            "required": [
+              "source_id",
+              "url",
+              "title"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "usage": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
+        },
+        "ao": {
+          "type": "object",
+          "properties": {
+            "engine_version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 40
+            },
+            "capabilities": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "advertised": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "id",
+                  "advertised"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "engine_version",
+            "capabilities"
+          ],
+          "additionalProperties": false
+        },
+        "preview": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "posts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "pattern": "^[a-z]{2,3}$"
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "excerpt": {
+                    "type": "string",
+                    "maxLength": 1000
+                  },
+                  "content": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200000
+                  }
+                },
+                "required": [
+                  "language",
+                  "title",
+                  "excerpt",
+                  "content"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 20
+            }
+          },
+          "required": [
+            "posts"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "posts",
+        "scores",
+        "agents",
+        "sources",
+        "usage",
+        "ao",
+        "preview"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "run_id",
+    "status",
+    "failure_reason",
+    "result"
+  ],
+  "additionalProperties": false
+}

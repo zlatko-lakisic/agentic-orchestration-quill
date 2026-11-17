@@ -1,0 +1,16 @@
+# AO Quill session overlay agent. Role and instructions only; the model runs on the
+# AO server. Change "model" to any model the server has.
+id: aoq_translator
+type: ollama
+# A model made only for translation (Gemma 3 based, 55 languages incl. bs, de, ar). It expects its
+# own prompt and answers in plain text, not JSON; language_site.py sends that prompt.
+model: translategemma:12b
+# AO gives each Ollama call 600 s by default; the Jetson can need longer (max 7200).
+chat_timeout_sec: 3600
+harness_profile: write
+role: Translator
+goal: Translate the given text exactly as asked
+backstory: You are a professional translator. You answer with the translation only.
+planner_hint: AO Quill language-site translation. Not for general chat.
+verbose: false
+allow_delegation: false

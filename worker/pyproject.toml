@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aoq-worker"
+version = "0.1.0"
+description = "AO Quill worker: a thin AO Reach client that sequences the pipeline between WordPress and AO"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+# Every dependency needs a recorded reason in docs/decisions.md.
+dependencies = [
+  # AO Reach Python client, pinned to a tag (D1).
+  "ao-reach @ git+https://github.com/zlatko-lakisic/agentic-orchestration-reach.git@v0.19.0#subdirectory=python",
+  # HTTP client for the WordPress Abilities REST API. Already required by ao-reach.
+  "aiohttp>=3.9,<4",
+  # JSON Schema validation of every contract and stage output.
+  "jsonschema>=4.21,<5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+aoq-worker = "aoq_worker.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+aoq_worker = ["contracts/*.json", "contracts/*/*.json"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]

@@ -1,0 +1,27 @@
+# SearXNG web search through the open-source mcp-searxng server (stdio, Node.js).
+# Upstream: https://github.com/ihor-sokoliuk/mcp-searxng (MIT). Replace @latest with the version you test.
+# Requires Node.js on the engine host and SEARXNG_URL pointing at the home lab SearXNG
+# instance with the JSON output format enabled (search.formats: [html, json]).
+id: search_searxng
+description: >-
+  Web search through the home lab SearXNG metasearch instance. Returns result titles, URLs and snippets.
+  No API key, no third-party quota.
+capabilities: >-
+  General web search with result URLs and snippets; pair with fetch_url to read pages in full.
+good_for: >-
+  Topic research, finding sources for factual claims, checking current interest in a subject.
+planner_hint: >-
+  Use for web search when citations are needed. Use fetch_url afterwards to read the pages.
+user_goal_keywords:
+  - web search
+  - find sources
+  - searxng
+
+required_env:
+  - SEARXNG_URL
+
+stdio:
+  command: npx
+  args: ["-y", "mcp-searxng@latest"]
+  env:
+    SEARXNG_URL: "${SEARXNG_URL}"

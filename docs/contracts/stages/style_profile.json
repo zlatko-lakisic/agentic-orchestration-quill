@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/style_profile",
+  "type": "object",
+  "properties": {
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$"
+    },
+    "voice": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "person": {
+      "type": "string",
+      "enum": [
+        "first",
+        "second",
+        "third",
+        "mixed"
+      ]
+    },
+    "formality": {
+      "type": "string",
+      "enum": [
+        "formal",
+        "neutral",
+        "informal"
+      ]
+    },
+    "avg_sentence_words": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "typical_length_words": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 20000
+    },
+    "structure": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "heading_habits": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "formatting_habits": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "phrases_to_avoid": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "maxItems": 50
+    }
+  },
+  "required": [
+    "language",
+    "voice",
+    "person",
+    "formality",
+    "avg_sentence_words",
+    "typical_length_words",
+    "structure",
+    "heading_habits",
+    "formatting_habits",
+    "phrases_to_avoid"
+  ],
+  "additionalProperties": false
+}

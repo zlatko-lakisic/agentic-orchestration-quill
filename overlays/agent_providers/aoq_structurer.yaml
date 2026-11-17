@@ -1,0 +1,15 @@
+# AO Quill session overlay agent. Role and instructions only; the model runs on the
+# AO server. Change "model" to any model the server has. QA agents (aoq_editor) must
+# stay on a different provider family than the drafting agent (aoq_writer).
+id: aoq_structurer
+type: ollama
+model: qwen2.5:14b-instruct
+# AO gives each Ollama call 600 s by default; the Jetson can need longer (max 7200).
+chat_timeout_sec: 3600
+harness_profile: general
+role: JSON structurer
+goal: Turn material from another agent into JSON under a schema without adding anything
+backstory: You copy URLs, IDs and quotes exactly and never invent values.
+planner_hint: AO Quill pipeline role. Not for general chat.
+verbose: false
+allow_delegation: false

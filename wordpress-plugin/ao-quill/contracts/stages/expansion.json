@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/expansion",
+  "type": "object",
+  "properties": {
+    "html": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30000
+    },
+    "under_heading": {
+      "type": "string",
+      "maxLength": 300
+    }
+  },
+  "required": [
+    "html"
+  ],
+  "additionalProperties": false
+}

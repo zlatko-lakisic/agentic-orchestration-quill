@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "aoq/report-instagram.input",
+  "type": "object",
+  "properties": {
+    "job_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "failed"
+      ]
+    },
+    "caption": {
+      "type": "string",
+      "maxLength": 2200
+    },
+    "hashtags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "maxItems": 30
+    },
+    "error": {
+      "type": "string",
+      "maxLength": 2000
+    }
+  },
+  "required": [
+    "job_id",
+    "status"
+  ],
+  "additionalProperties": false
+}

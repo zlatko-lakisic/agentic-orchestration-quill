@@ -1,0 +1,14 @@
+{
+  "run_id": "3f2b8c1e-9a4d-4c7e-8b1a-2d3e4f5a6b7c",
+  "stage": "publish",
+  "language": null,
+  "attempt": 1,
+  "status": "ok",
+  "started_at": "2026-11-12T07:01:00Z",
+  "duration_ms": 1,
+  "agents": [],
+  "scores": [],
+  "revision_count": 0,
+  "failure_reason": null,
+  "detail": {}
+}

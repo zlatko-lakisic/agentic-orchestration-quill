@@ -1,0 +1,27 @@
+{
+  "run_id": "3f2b8c1e-9a4d-4c7e-8b1a-2d3e4f5a6b7c",
+  "stage": "qa",
+  "language": null,
+  "attempt": 2,
+  "status": "failed",
+  "started_at": "2026-11-12T07:01:00Z",
+  "duration_ms": 81234,
+  "agents": [
+    {
+      "role": "qa_grammar",
+      "agent_id": "client.aoq_editor",
+      "model": "gemma3"
+    }
+  ],
+  "scores": [
+    {
+      "check": "grammar",
+      "score": 0.71,
+      "threshold": 0.8,
+      "passed": false
+    }
+  ],
+  "revision_count": 3,
+  "failure_reason": "QA below threshold after 3 revision loops: grammar 0.71 < 0.80",
+  "detail": {}
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/image_relevance",
+  "type": "object",
+  "properties": {
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "image_key": {
+            "type": "string",
+            "pattern": "^([0-9]+:[0-9]+|openverse:[A-Za-z0-9-]{1,64}|commons:[0-9]{1,15}|web:[a-f0-9]{12})$"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "shows": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "image_key",
+          "score",
+          "shows",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 12
+    }
+  },
+  "required": [
+    "images"
+  ],
+  "additionalProperties": false
+}

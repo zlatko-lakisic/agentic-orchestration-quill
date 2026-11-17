@@ -1,0 +1,16 @@
+# AO Quill session overlay agent. Role and instructions only; the model runs on the
+# AO server. Change "model" to any model the server has. QA agents (aoq_editor) must
+# stay on a different provider family than the drafting agent (aoq_writer).
+id: aoq_writer
+type: ollama
+# Not a "thinking" model: qwen3.5:27b took about 14 minutes per draft on the Jetson (D21).
+model: qwen2.5:14b-instruct
+# AO gives each Ollama call 600 s by default; the Jetson can need longer (max 7200).
+chat_timeout_sec: 3600
+harness_profile: write
+role: Site writer
+goal: Write and translate posts that match the site's own style
+backstory: You write clear, accurate prose for travelers. You only state facts that the verified claims support.
+planner_hint: AO Quill pipeline role. Not for general chat.
+verbose: false
+allow_delegation: false

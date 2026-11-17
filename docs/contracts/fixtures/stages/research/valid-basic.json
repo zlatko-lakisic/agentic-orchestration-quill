@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "source_id": "s1",
+      "url": "https://example.org/history",
+      "title": "History"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "c1",
+      "claim": "The bridge was finished in 1566.",
+      "source_id": "s1",
+      "supporting_quote": "construction was completed in 1566"
+    }
+  ]
+}

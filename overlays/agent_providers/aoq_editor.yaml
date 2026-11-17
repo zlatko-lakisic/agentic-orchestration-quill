@@ -1,0 +1,17 @@
+# AO Quill session overlay agent. Role and instructions only; the model runs on the
+# AO server. Change "model" to any model the server has. QA agents (aoq_editor) must
+# stay on a different provider family than the drafting agent (aoq_writer).
+id: aoq_editor
+type: ollama
+# Not a "thinking" model, and a different family from the writer (phi vs qwen). gemma4:26b thought
+# for over 30 minutes on one facts check without answering; phi4 answered in 93 s, strict, valid JSON (D21).
+model: phi4:latest
+# AO gives each Ollama call 600 s by default; the Jetson can need longer (max 7200).
+chat_timeout_sec: 3600
+harness_profile: reason
+role: Independent editor
+goal: Review drafts and translations and score them against explicit criteria
+backstory: You are strict and specific. You never rewrite the post yourself; you list problems and exact fixes.
+planner_hint: AO Quill pipeline role. Not for general chat.
+verbose: false
+allow_delegation: false

@@ -1,0 +1,278 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "aoq/commit-post.input",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 200,
+            "pattern": "^[a-z0-9-]*$"
+          },
+          "excerpt": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200000
+          },
+          "category_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "minItems": 1,
+            "maxItems": 20
+          },
+          "tag_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxItems": 40
+          },
+          "seo": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 400
+              },
+              "focus_keyword": {
+                "type": "string",
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "title",
+              "description",
+              "focus_keyword"
+            ],
+            "additionalProperties": false
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^(featured|inline-[0-9]+)$"
+                },
+                "alt": {
+                  "type": "string",
+                  "maxLength": 400
+                },
+                "caption": {
+                  "type": "string",
+                  "maxLength": 1000
+                }
+              },
+              "required": [
+                "key",
+                "alt",
+                "caption"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 7
+          },
+          "instagram": {
+            "type": "object",
+            "properties": {
+              "caption": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2200
+              },
+              "hashtags": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "maxItems": 30
+              }
+            },
+            "required": [
+              "caption",
+              "hashtags"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "language",
+          "title",
+          "slug",
+          "excerpt",
+          "content",
+          "category_ids",
+          "tag_ids",
+          "seo",
+          "images"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 20
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^(featured|inline-[0-9]+)$"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "media_library",
+              "remote"
+            ]
+          },
+          "media": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "blog_id": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "id": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "blog_id",
+              "id"
+            ],
+            "additionalProperties": false
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "^https?://"
+          },
+          "source_page_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "^https?://"
+          },
+          "license": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "site-library",
+                  "cc0",
+                  "pdm",
+                  "cc-by",
+                  "cc-by-sa",
+                  "pexels",
+                  "unchecked"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1,
+                "maxLength": 2048,
+                "pattern": "^https?://"
+              },
+              "allows_download_and_reuse": {
+                "type": "boolean"
+              },
+              "requires_attribution": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "code",
+              "name",
+              "url",
+              "allows_download_and_reuse",
+              "requires_attribution"
+            ],
+            "additionalProperties": false
+          },
+          "author": {
+            "type": "string",
+            "maxLength": 400
+          },
+          "attribution": {
+            "type": "string",
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "key",
+          "source",
+          "media",
+          "url",
+          "source_page_url",
+          "license",
+          "author",
+          "attribution"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 7
+    }
+  },
+  "required": [
+    "run_id",
+    "posts",
+    "images"
+  ],
+  "additionalProperties": false
+}

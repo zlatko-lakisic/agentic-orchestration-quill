@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/novelty",
+  "type": "object",
+  "properties": {
+    "judgments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "pattern": "^t[0-9]{1,2}$"
+          },
+          "novel": {
+            "type": "boolean"
+          },
+          "closest_post_keys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9]+:[0-9]+$"
+            },
+            "maxItems": 5
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "candidate_id",
+          "novel",
+          "closest_post_keys",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 10
+    },
+    "chosen_candidate_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^t[0-9]{1,2}$"
+    }
+  },
+  "required": [
+    "judgments",
+    "chosen_candidate_id"
+  ],
+  "additionalProperties": false
+}

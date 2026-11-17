@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/qa_facts",
+  "type": "object",
+  "properties": {
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "unsupported_sentences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sentence": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "sentence",
+          "why"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 50
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": [
+              "minor",
+              "major",
+              "critical"
+            ]
+          },
+          "location": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "problem": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "fix": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "severity",
+          "location",
+          "problem",
+          "fix"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 50
+    }
+  },
+  "required": [
+    "score",
+    "summary",
+    "unsupported_sentences",
+    "issues"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+{
+  "run": {
+    "run_id": "3f2b8c1e-9a4d-4c7e-8b1a-2d3e4f5a6b7c",
+    "run_date": "2026-11-12",
+    "trigger": "cron",
+    "lease_expires_at": "2026-11-12T11:00:00+00:00"
+  }
+}

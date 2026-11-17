@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/html_translation",
+  "type": "object",
+  "properties": {
+    "html": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40000
+    }
+  },
+  "required": [
+    "html"
+  ],
+  "additionalProperties": false
+}

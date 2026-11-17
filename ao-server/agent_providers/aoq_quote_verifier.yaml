@@ -1,0 +1,10 @@
+# AO Quill research gate. Fetches every source on the AO server and checks that each
+# supporting quote is an exact substring of the page text. No model.
+# Requires the aoq-ao-checks package in the engine's Python environment (see INSTALL.md).
+id: aoq_quote_verifier
+type: deterministic
+role: Quote verifier
+goal: Verify research quotes against the fetched source text
+backstory: Fixed Python callable; no language model.
+entrypoint: aoq_ao_checks.quotes:verify_quotes
+planner_hint: AO Quill only. Called directly by the AO Quill worker, never by the planner.

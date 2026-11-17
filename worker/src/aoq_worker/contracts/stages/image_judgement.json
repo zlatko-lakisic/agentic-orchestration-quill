@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/image_judgement",
+  "type": "object",
+  "properties": {
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "image_key": {
+            "type": "string",
+            "pattern": "^([0-9]+:[0-9]+|openverse:[A-Za-z0-9-]{1,64}|commons:[0-9]{1,15}|web:[a-f0-9]{12})$"
+          },
+          "relevant": {
+            "type": "boolean"
+          },
+          "has_text": {
+            "type": "boolean"
+          },
+          "has_logo": {
+            "type": "boolean"
+          },
+          "has_watermark": {
+            "type": "boolean"
+          },
+          "has_recognizable_people": {
+            "type": "boolean"
+          },
+          "alt_text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "caption": {
+            "type": "string",
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "relevant",
+          "has_text",
+          "has_logo",
+          "has_watermark",
+          "has_recognizable_people",
+          "alt_text",
+          "caption"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 12
+    }
+  },
+  "required": [
+    "images"
+  ],
+  "additionalProperties": false
+}

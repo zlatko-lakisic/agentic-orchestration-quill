@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/back_translation",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "content_text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200000
+    }
+  },
+  "required": [
+    "title",
+    "content_text"
+  ],
+  "additionalProperties": false
+}

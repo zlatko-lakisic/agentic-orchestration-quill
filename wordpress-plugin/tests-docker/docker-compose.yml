@@ -1,0 +1,24 @@
+# PHP test runner: WordPress multisite test suite against MariaDB.
+# Usage (from the repo root): docker compose -f wordpress-plugin/tests-docker/docker-compose.yml run --rm phpunit
+services:
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: wp_tests
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 3s
+      retries: 30
+  phpunit:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WP_VERSION: "${WP_VERSION:-7.1.3}"
+      WP_TESTS_DIR: /wp/tests/phpunit
+    volumes:
+      - ../..:/repo
+    working_dir: /repo/wordpress-plugin/ao-quill
+    entrypoint: ["bash", "/repo/wordpress-plugin/bin/run-tests-in-container.sh"]

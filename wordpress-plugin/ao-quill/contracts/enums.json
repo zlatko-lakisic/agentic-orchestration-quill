@@ -1,0 +1,80 @@
+{
+  "agent_roles": [
+    "site_profile",
+    "style_profile",
+    "topics",
+    "novelty",
+    "research",
+    "structurer",
+    "outline",
+    "draft",
+    "taxonomy",
+    "image_shortlist",
+    "image_vision",
+    "qa_grammar",
+    "qa_facts",
+    "qa_style",
+    "qa_seo",
+    "translate",
+    "back_translate",
+    "translation_qa",
+    "quote_verifier",
+    "text_checks"
+  ],
+  "qa_roles": [
+    "qa_grammar",
+    "qa_facts",
+    "qa_style",
+    "qa_seo",
+    "back_translate",
+    "translation_qa"
+  ],
+  "deterministic_roles": [
+    "quote_verifier",
+    "text_checks"
+  ],
+  "thresholds": [
+    "grammar",
+    "facts",
+    "style",
+    "seo",
+    "structure",
+    "translation_grammar",
+    "translation_fidelity",
+    "translation_style"
+  ],
+  "image_sources": [
+    "media_library",
+    "stock",
+    "web_search",
+    "ai_generated"
+  ],
+  "license_codes": [
+    "site-library",
+    "cc0",
+    "pdm",
+    "cc-by",
+    "cc-by-sa",
+    "pexels",
+    "unchecked"
+  ],
+  "stages": [
+    "connect",
+    "inventory",
+    "site_profile",
+    "style_profile",
+    "topics",
+    "novelty",
+    "research",
+    "verify_quotes",
+    "outline",
+    "draft",
+    "taxonomy",
+    "images",
+    "qa",
+    "translate",
+    "translation_qa",
+    "commit",
+    "finish"
+  ]
+}

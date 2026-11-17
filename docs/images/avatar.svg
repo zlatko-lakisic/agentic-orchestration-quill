@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <title>AO Quill</title>
+  <!-- Project avatar: the logo mark on the illustrations' off-white, with room for a round crop -->
+  <rect width="192" height="192" fill="#F4F2EE"/>
+  <image href="logo.svg" x="14" y="14" width="164" height="164"/>
+</svg>

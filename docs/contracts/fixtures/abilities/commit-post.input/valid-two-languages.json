@@ -1,0 +1,101 @@
+{
+  "run_id": "3f2b8c1e-9a4d-4c7e-8b1a-2d3e4f5a6b7c",
+  "posts": [
+    {
+      "language": "en",
+      "title": "Walking the stone bridge at dawn",
+      "slug": "stone-bridge-dawn",
+      "excerpt": "A short guide.",
+      "content": "<p>Intro.</p><!-- aoq:image featured --><h2>Before sunrise</h2><p>Text with <a data-aoq-post=\"12\">a link</a>.</p><!-- aoq:image inline-1 -->",
+      "category_ids": [
+        3
+      ],
+      "tag_ids": [
+        10,
+        11
+      ],
+      "seo": {
+        "title": "Old bridge at dawn",
+        "description": "How to see the stone bridge at dawn.",
+        "focus_keyword": "stone bridge"
+      },
+      "images": [
+        {
+          "key": "featured",
+          "alt": "Bridge at dawn",
+          "caption": ""
+        },
+        {
+          "key": "inline-1",
+          "alt": "River",
+          "caption": "The river"
+        }
+      ]
+    },
+    {
+      "language": "bs",
+      "title": "Stari most u zoru",
+      "slug": "stari-most-zora",
+      "excerpt": "Kratki vodič.",
+      "content": "<p>Uvod.</p><!-- aoq:image featured -->",
+      "category_ids": [
+        4
+      ],
+      "tag_ids": [],
+      "seo": {
+        "title": "Stari most",
+        "description": "Opis.",
+        "focus_keyword": "stari most"
+      },
+      "images": [
+        {
+          "key": "featured",
+          "alt": "Most u zoru",
+          "caption": ""
+        },
+        {
+          "key": "inline-1",
+          "alt": "Rijeka",
+          "caption": "Rijeka"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "key": "featured",
+      "source": "media_library",
+      "media": {
+        "blog_id": 1,
+        "id": 501
+      },
+      "url": null,
+      "source_page_url": null,
+      "license": {
+        "code": "site-library",
+        "name": "Site media library",
+        "url": null,
+        "allows_download_and_reuse": true,
+        "requires_attribution": false
+      },
+      "author": "",
+      "attribution": ""
+    },
+    {
+      "key": "inline-1",
+      "source": "remote",
+      "media": null,
+      "url": "https://images.example.org/river.jpg",
+      "source_page_url": "https://images.example.org/river",
+      "license": {
+        "code": "cc-by",
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "allows_download_and_reuse": true,
+        "requires_attribution": true
+      },
+      "author": "A. Photographer",
+      "attribution": "River by A. Photographer, CC BY 4.0"
+    }
+  ]
+}

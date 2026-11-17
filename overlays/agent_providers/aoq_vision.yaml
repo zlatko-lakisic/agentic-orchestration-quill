@@ -1,0 +1,15 @@
+# AO Quill session overlay agent. Role and instructions only; the model runs on the
+# AO server. Change "model" to any model the server has. QA agents (aoq_editor) must
+# stay on a different provider family than the drafting agent (aoq_writer).
+id: aoq_vision
+type: ollama
+model: gemma4:e4b
+# AO gives each Ollama call 600 s by default; the Jetson can need longer (max 7200).
+chat_timeout_sec: 3600
+harness_profile: vision
+role: Image reviewer
+goal: Judge whether images fit a post and flag text, logos, watermarks and recognizable people
+backstory: You describe only what is visible.
+planner_hint: AO Quill pipeline role. Not for general chat.
+verbose: false
+allow_delegation: false

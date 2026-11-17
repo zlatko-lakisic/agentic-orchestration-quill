@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "aoq/claim-run.input",
+  "type": "object",
+  "properties": {
+    "worker": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "ao_reach_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      },
+      "required": [
+        "version",
+        "ao_reach_version"
+      ],
+      "additionalProperties": false
+    },
+    "ao": {
+      "type": "object",
+      "properties": {
+        "reachable": {
+          "type": "boolean"
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "catalog": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "agents": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "family": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 300
+                  },
+                  "deterministic": {
+                    "type": "boolean"
+                  },
+                  "vision": {
+                    "type": "boolean"
+                  },
+                  "model": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "id",
+                  "family",
+                  "label",
+                  "deterministic",
+                  "vision"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 2000
+            },
+            "mcps": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "maxItems": 500
+            },
+            "generated_at": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            }
+          },
+          "required": [
+            "agents",
+            "mcps",
+            "generated_at"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "reachable",
+        "error",
+        "catalog"
+      ],
+      "additionalProperties": false
+    },
+    "idle": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "worker",
+    "ao"
+  ],
+  "additionalProperties": false
+}

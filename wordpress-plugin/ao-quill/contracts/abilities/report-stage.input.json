@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "aoq/report-stage.input",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "connect",
+        "inventory",
+        "site_profile",
+        "style_profile",
+        "topics",
+        "novelty",
+        "research",
+        "verify_quotes",
+        "outline",
+        "draft",
+        "taxonomy",
+        "images",
+        "qa",
+        "translate",
+        "translation_qa",
+        "commit",
+        "finish"
+      ]
+    },
+    "language": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-z]{2,3}$"
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "failed"
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "agent_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "role",
+          "agent_id",
+          "model"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 50
+    },
+    "scores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "check": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "threshold": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "passed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "check",
+          "score",
+          "threshold",
+          "passed"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 50
+    },
+    "revision_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 50
+    },
+    "failure_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 4000
+    },
+    "detail": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "run_id",
+    "stage",
+    "language",
+    "attempt",
+    "status",
+    "started_at",
+    "duration_ms",
+    "agents",
+    "scores",
+    "revision_count",
+    "failure_reason",
+    "detail"
+  ],
+  "additionalProperties": false
+}

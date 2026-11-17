@@ -1,0 +1,12 @@
+[Unit]
+Description=AO Quill worker poll
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+# Docker variant. For a plain Python install, use:
+#   ExecStart=/opt/ao-quill/.venv/bin/aoq-worker run
+#   EnvironmentFile=/etc/ao-quill/worker.env
+ExecStart=/usr/bin/docker run --rm --env-file /etc/ao-quill/worker.env registry.example.internal/ao-quill-worker:0.1.0 run
+TimeoutStartSec=4h

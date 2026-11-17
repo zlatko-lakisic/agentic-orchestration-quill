@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/instagram_caption",
+  "type": "object",
+  "properties": {
+    "caption": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "hashtags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 60
+      },
+      "maxItems": 30
+    }
+  },
+  "required": [
+    "caption",
+    "hashtags"
+  ],
+  "additionalProperties": false
+}

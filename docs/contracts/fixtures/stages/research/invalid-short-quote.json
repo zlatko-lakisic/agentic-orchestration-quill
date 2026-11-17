@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "source_id": "s1",
+      "url": "https://example.org/history",
+      "title": "History"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "c1",
+      "claim": "x",
+      "source_id": "s1",
+      "supporting_quote": "1566"
+    }
+  ]
+}

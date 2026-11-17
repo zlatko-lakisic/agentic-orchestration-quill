@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/image_shortlist",
+  "type": "object",
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "media_key": {
+            "type": "string",
+            "pattern": "^[0-9]+:[0-9]+$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "media_key",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 12
+    }
+  },
+  "required": [
+    "candidates"
+  ],
+  "additionalProperties": false
+}

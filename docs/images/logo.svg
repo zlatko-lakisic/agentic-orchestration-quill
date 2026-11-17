@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>AO Quill</title>
+  <defs>
+    <!-- Nib: straight shoulders, convex sides meeting at the point. Centered on 0,0, point down. -->
+    <path id="nib" d="M -140 -170 C -140 -40 -78 130 0 285 C 78 130 140 -40 140 -170 Z"/>
+    <clipPath id="right-half"><rect x="0" y="-400" width="400" height="800"/></clipPath>
+  </defs>
+  <!-- Orbit: a teal arc around two thirds of the circle -->
+  <path d="M 512 62 A 450 450 0 1 1 122 287" fill="none" stroke="#2BA59B" stroke-width="34" stroke-linecap="round"/>
+  <!-- Ring -->
+  <circle cx="512" cy="512" r="372" fill="#F4F2EE" stroke="#1E2A4A" stroke-width="44"/>
+  <g transform="translate(486 528) rotate(-26)">
+    <!-- Soft long shadow -->
+    <g transform="translate(22 20)" fill="#1E2A4A" opacity="0.13">
+      <use href="#nib"/>
+      <rect x="-160" y="-250" width="320" height="86" rx="20"/>
+    </g>
+    <!-- Nib, two-tone like the illustrations -->
+    <use href="#nib" fill="#E8A33D"/>
+    <use href="#nib" fill="#C98A2C" clip-path="url(#right-half)"/>
+    <!-- Collar -->
+    <rect x="-160" y="-250" width="320" height="86" rx="20" fill="#E8A33D"/>
+    <rect x="-160" y="-250" width="320" height="86" rx="20" fill="#C98A2C" clip-path="url(#right-half)"/>
+    <!-- Breather hole and slit -->
+    <circle cx="0" cy="-10" r="40" fill="#F4F2EE"/>
+    <rect x="-8" y="26" width="16" height="230" rx="8" fill="#F4F2EE"/>
+  </g>
+</svg>

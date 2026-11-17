@@ -1,0 +1,22 @@
+---
+description: How to mirror ao-quill into the public GitHub production submodule and release versions
+alwaysApply: true
+---
+
+# GitHub production mirror
+
+- Public publish target: `production/agentic-orchestration-quill` (submodule → `zlatko-lakisic/agentic-orchestration-quill`).
+- Mirror **tracked** parent files only. Exclude `production/` and `.gitmodules`.
+- Never copy `production/` into the submodule — that nests the submodule inside itself.
+
+## Release flow
+
+1. Sync tracked files (minus `production/`, `.gitmodules`) into the submodule.
+2. Commit in the submodule on `main`.
+3. Annotated tag `vX.Y.Z`, push branch + tag.
+4. `gh release create vX.Y.Z` on the code repo.
+5. Update the parent submodule pointer on a feature branch and open a PR (never commit straight to `main`).
+
+## Twin wiki
+
+`ao-quill.wiki` mirrors the same way into `production/agentic-orchestration-quill.wiki`. Tag and push only — GitHub wiki remotes do not support `gh release`.

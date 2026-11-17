@@ -1,0 +1,344 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "aoq/get-inventory.output",
+  "type": "object",
+  "properties": {
+    "page": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "per_page": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 200
+    },
+    "total_pages": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          },
+          "locale": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 20
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "blog_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "^https?://"
+          },
+          "primary": {
+            "type": "boolean"
+          },
+          "excluded": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "code",
+          "locale",
+          "name",
+          "blog_id",
+          "url",
+          "primary",
+          "excluded"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9]+:[0-9]+$"
+          },
+          "blog_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "excerpt": {
+            "type": "string",
+            "maxLength": 5000
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 500000
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "^https?://"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "publish",
+              "future",
+              "draft",
+              "pending",
+              "private"
+            ]
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "date": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})$"
+          },
+          "modified": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})$"
+          },
+          "ai_generated": {
+            "type": "boolean"
+          },
+          "translation_group": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          }
+        },
+        "required": [
+          "key",
+          "blog_id",
+          "id",
+          "language",
+          "title",
+          "excerpt",
+          "content",
+          "url",
+          "status",
+          "categories",
+          "tags",
+          "date",
+          "modified",
+          "ai_generated",
+          "translation_group"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "blog_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          },
+          "taxonomy": {
+            "type": "string",
+            "enum": [
+              "category",
+              "post_tag"
+            ]
+          },
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 400
+          },
+          "slug": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 400
+          },
+          "parent": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "language": {
+                  "type": "string",
+                  "pattern": "^[a-z]{2,3}$"
+                },
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "language",
+                "id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "blog_id",
+          "language",
+          "taxonomy",
+          "id",
+          "name",
+          "slug",
+          "parent",
+          "count",
+          "translations"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9]+:[0-9]+$"
+          },
+          "blog_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "^https?://"
+          },
+          "preview_url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "^https?://"
+          },
+          "alt": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "caption": {
+            "type": "string",
+            "maxLength": 5000
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "mime": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "filesize": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "date": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})$"
+          }
+        },
+        "required": [
+          "key",
+          "blog_id",
+          "id",
+          "language",
+          "url",
+          "preview_url",
+          "alt",
+          "caption",
+          "title",
+          "mime",
+          "filesize",
+          "width",
+          "height",
+          "date"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "page",
+    "per_page",
+    "total_pages",
+    "languages",
+    "posts",
+    "terms",
+    "media"
+  ],
+  "additionalProperties": false
+}

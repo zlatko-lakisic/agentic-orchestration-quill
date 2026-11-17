@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "stage/outline",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "level": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 4
+          },
+          "key_points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "point": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "claim_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^c[0-9]{1,3}$"
+                  },
+                  "maxItems": 10
+                }
+              },
+              "required": [
+                "point",
+                "claim_ids"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 12
+          }
+        },
+        "required": [
+          "heading",
+          "level",
+          "key_points"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 15
+    },
+    "internal_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "post_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "anchor_hint": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "post_id",
+          "anchor_hint"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 8
+    }
+  },
+  "required": [
+    "title",
+    "sections",
+    "internal_links"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,10 @@
+# AO Quill structure and originality gate (heading order, lengths, word n-gram overlap
+# with sources and existing posts). No model.
+# Requires the aoq-ao-checks package in the engine's Python environment (see INSTALL.md).
+id: aoq_text_checks
+type: deterministic
+role: Text checks
+goal: Check post structure and n-gram originality
+backstory: Fixed Python callable; no language model.
+entrypoint: aoq_ao_checks.textchecks:text_checks
+planner_hint: AO Quill only. Called directly by the AO Quill worker, never by the planner.
